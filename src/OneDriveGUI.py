@@ -12,7 +12,7 @@ import logging.handlers as handlers
 from configparser import ConfigParser
 
 from PySide6.QtCore import QThread, QTimer, QUrl, Signal, QFileInfo, Qt
-from PySide6.QtGui import QIcon, QPixmap, QDesktopServices
+from PySide6.QtGui import QIcon, QPixmap, QDesktopServices, QColor, QPalette
 from PySide6.QtWidgets import (
     QWidget,
     QApplication,
@@ -37,6 +37,7 @@ from PySide6.QtWidgets import (
     QComboBox,
     QStyledItemDelegate,
     QStyleOptionViewItem,
+    QToolButton,
 )
 from urllib3 import HTTPSConnectionPool
 
@@ -2234,7 +2235,6 @@ class WorkerThread(QThread):
                 ] = 'OneDrive Client not found! Please <a href="https://github.com/abraunegg/onedrive/blob/master/docs/INSTALL.md" style="color:#FFFFFF;">install</a> it.'
                 self.update_profile_status.emit(self.profile_status, self.profile_name)
 
-
             elif "--resync is required" in stderr:
                 # Ask user for resync authorization and stop the worker.
                 logging.error(f"[{self.profile_name}] {str(stderr)}  - Asking for resync authorization.")
@@ -2340,20 +2340,39 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tray = QSystemTrayIcon()
         if self.tray.isSystemTrayAvailable():
 
-            icon = QIcon(DIR_PATH + "/resources/images/icons8-clouds-48.png")
-            menu = QMenu()
+            # Change shade of system tray icon based on used system theme.
+            palette = QApplication.palette()
+            bg_color = palette.color(QPalette.Window)
+            TextColor = palette.color(QPalette.Text)
+            dark = palette.color(QPalette.Dark)
+            highlight = palette.color(QPalette.Highlight)
 
-            show_action = menu.addAction("Show/Hide")
+            tray_icon_pixmap = QPixmap(DIR_PATH + "/resources/images/icons8-clouds-48.png")
+            mask = tray_icon_pixmap.createMaskFromColor(QColor("#BBDEFB"), Qt.MaskOutColor)
+
+            # print(bg_color.lightness())
+            # if bg_color.lightness() > 128:
+            #     tray_icon_pixmap.fill(QColor("#123354"))
+            # else:
+            #     tray_icon_pixmap.fill(QColor("#BBDEFB"))
+
+            tray_icon_pixmap.fill(highlight)
+
+            tray_icon_pixmap.setMask(mask)
+            icon = QIcon(tray_icon_pixmap)
+            self.tray.setIcon(icon)
+
+            # Configure system tray menu
+            tray_menu = QMenu()
+            show_action = tray_menu.addAction("Show/Hide")
             show_action.triggered.connect(lambda: self.hide() if self.isVisible() else self.show())
-            setting_action = menu.addAction("Settings")
+            setting_action = tray_menu.addAction("Settings")
             setting_action.triggered.connect(self.show_settings_window)
-            quit_action = menu.addAction("Quit")
+            quit_action = tray_menu.addAction("Quit")
             quit_action.triggered.connect(lambda: main_window.graceful_shutdown())
 
             self.tray.activated.connect(self.tray_icon_clicked)
-
-            self.tray.setIcon(icon)
-            self.tray.setContextMenu(menu)
+            self.tray.setContextMenu(tray_menu)
             self.tray.show()
             self.tray.setToolTip("OneDriveGUI")
 
