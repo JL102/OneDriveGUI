@@ -2620,7 +2620,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         file_path = f"{_sync_dir}" + "/" + data["file_path"]
         absolute_path = QFileInfo(file_path).absolutePath().replace(" ", "%20")
         relative_path_display = os.path.relpath(QFileInfo(file_path).absolutePath(), _sync_dir + os.path.sep)
-        parent_dir = re.search(r".+/([^/]+)/.+$", file_path).group(1)
+        parent_dir = os.dirname(file_path) # Use native method to find parent directory of file
         file_size = QFileInfo(file_path + ".partial").size() if QFileInfo(file_path).size() == 0 else QFileInfo(file_path).size()
         file_size_human = humanize_file_size(file_size)
         file_name = QFileInfo(file_path).fileName()
@@ -2664,7 +2664,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             myQCustomQWidget.set_label_2(f"")
 
         elif transfer_complete:
-            shortened_path = shorten_path(relative_path_display, 32)
+            shortened_path = parent_dir if (relative_path_display == '.') else shorten_path(relative_path_display, 32)
+            print(shortened_path, relative_path_display == '.')
             myQCustomQWidget.set_label_1(f"Available in <a href=file:///{absolute_path}>{shortened_path}</a>")
             myQCustomQWidget.set_label_2(f"{file_size_human}")
 
