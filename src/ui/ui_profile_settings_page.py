@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'profile_settings_page.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.3
+## Created by: Qt User Interface Compiler version 6.2.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -25,7 +25,7 @@ class Ui_profile_settings(object):
     def setupUi(self, profile_settings):
         if not profile_settings.objectName():
             profile_settings.setObjectName(u"profile_settings")
-        profile_settings.resize(820, 692)
+        profile_settings.resize(820, 694)
         self.verticalLayout_2 = QVBoxLayout(profile_settings)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(-1, 0, -1, 0)
@@ -734,7 +734,7 @@ class Ui_profile_settings(object):
 
         self.retranslateUi(profile_settings)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(profile_settings)
@@ -771,36 +771,29 @@ class Ui_profile_settings(object):
         self.label_rate_limit_mbps.setText(QCoreApplication.translate("profile_settings", u"(Mb/s)", None))
         self.groupBox_4.setTitle(QCoreApplication.translate("profile_settings", u"Advanced Properties", None))
 #if QT_CONFIG(tooltip)
-        self.label_monitor_interval.setToolTip(QCoreApplication.translate("profile_settings", u"<html><head/><body><p>The monitor interval is defined as the wait time 'between' sync's when running in monitor mode. </p><p>When this interval expires, the client will check OneDrive for changes online, performing data </p><p>integrity checks and scanning the local <span style=\" font-weight:700;\">Sync Directory</span> for new content.</p><p><br/></p><p>By default without configuration, monitor interval is set to <span style=\" font-weight:700;\">300</span> seconds. Setting this value </p><p>to <span style=\" font-weight:700;\">600</span> will run the sync process every <span style=\" font-weight:700;\">10 minutes</span>.</p></body></html>", None))
+        self.label_monitor_interval.setToolTip(QCoreApplication.translate("profile_settings", u"<html><head/><body><p>The monitor interval is defined as the wait time 'between' sync's when running in monitor mode. When this interval expires, the client will check OneDrive for changes online, performing data integrity checks and scanning the local <span style=\" font-weight:700;\">Sync Directory</span> for new content.<br/></p><p>By default without configuration, monitor interval is set to <span style=\" font-weight:700;\">300</span> seconds. Setting this value to <span style=\" font-weight:700;\">600</span> will run the sync process every <span style=\" font-weight:700;\">10 minutes</span>.</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
-        self.label_monitor_interval.setText(QCoreApplication.translate("profile_settings", u"Monitor interval", None))
+        self.label_monitor_interval.setText(QCoreApplication.translate("profile_settings", u"Monitor interval (seconds)", None))
 #if QT_CONFIG(tooltip)
-        self.label_monitor_fullscan_frequency.setToolTip(QCoreApplication.translate("profile_settings", u"This configuration option controls the number of 'monitor_interval' iterations between when a \n"
-"full scan of your data is performed to ensure data integrity and consistency.\n"
-"\n"
-"By default without configuration, 'monitor_fullscan_frequency' is set to 12. In this default state,\n"
-"this means that a full scan is performed every 'monitor_interval' x 'monitor_fullscan_frequency' = 3600 seconds. \n"
-"This is only applicable when running in --monitor mode.\n"
-"\n"
-"Setting this value to 24 means that the full scan of OneDrive and checking the integrity of the data stored \n"
-"locally will occur every 2 hours (assuming 'monitor_interval' is set to 300 seconds).", None))
+        self.label_monitor_fullscan_frequency.setToolTip(QCoreApplication.translate("profile_settings", u"<html><head/><body><p>This configuration option controls the number of 'monitor_interval' iterations between when a full scan of your data is performed to ensure data integrity and consistency.</p><p><br/></p><p>By default without configuration, 'monitor_fullscan_frequency' is set to 12. In this default state, this means that a full scan is performed every 'monitor_interval' x 'monitor_fullscan_frequency' = 3600 seconds. This is only applicable when running in --monitor mode.</p><p><br/></p><p>Setting this value to 24 means that the full scan of OneDrive and checking the integrity of the data stored locally will occur every 2 hours (assuming 'monitor_interval' is set to 300 seconds).</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
-        self.label_monitor_fullscan_frequency.setText(QCoreApplication.translate("profile_settings", u"Monitor full-scan frequency", None))
+        self.label_monitor_fullscan_frequency.setText(QCoreApplication.translate("profile_settings", u"Monitor full-scan multiplier", None))
 #if QT_CONFIG(tooltip)
         self.label_classify_as_big_delete.setToolTip(QCoreApplication.translate("profile_settings", u"Number of children in a path that is locally removed which will be classified as a 'big data delete'", None))
 #endif // QT_CONFIG(tooltip)
-        self.label_classify_as_big_delete.setText(QCoreApplication.translate("profile_settings", u"Clasify as big delete", None))
+        self.label_classify_as_big_delete.setText(QCoreApplication.translate("profile_settings", u"\"Big delete\" threshold", None))
 #if QT_CONFIG(tooltip)
         self.label_operation_timeout.setToolTip(QCoreApplication.translate("profile_settings", u"Operation Timeout is the maximum amount of time (seconds) a file operation is allowed to take. This includes DNS resolution, connecting, data transfer, etc.", None))
 #endif // QT_CONFIG(tooltip)
-        self.label_operation_timeout.setText(QCoreApplication.translate("profile_settings", u"Operation timeout", None))
+        self.label_operation_timeout.setText(QCoreApplication.translate("profile_settings", u"Operation timeout (seconds)", None))
         self.label_drive_id.setText(QCoreApplication.translate("profile_settings", u"SharePoint Library Drive ID", None))
 #if QT_CONFIG(tooltip)
-        self.label_sync_file_permissions.setToolTip(QCoreApplication.translate("profile_settings", u"<html><head/><body><p>Utilise the <a href=\"https://chmod-calculator.com/\"><span style=\" text-decoration: underline; color:#5e81ac;\">Unix Permissions Calculator</span></a> to assist in determining the required permissions.</p><p><br/></p><p>Important: Special permission bits (setuid, setgid, sticky bit) are not supported. </p><p>Valid permission values are from <span style=\" font-weight:700;\">000</span> to <span style=\" font-weight:700;\">777</span> only.</p></body></html>", None))
+        self.label_sync_file_permissions.setToolTip(QCoreApplication.translate("profile_settings", u"<html><head/><body><p>Valid permission values are from <span style=\" font-weight:700;\">000</span> to <span style=\" font-weight:700;\">777</span> only. Important: Special permission bits (setuid, setgid, sticky bit) are not supported. </p><p>First number: Permissions for you, the owner</p><p>Second number: Permissions for users of the same group as you</p><p>Third number: Permissions for all other users</p><p><span style=\" font-weight:700;\">0</span> = None, <span style=\" font-weight:700;\">1</span> = Execute, <span style=\" font-weight:700;\">2</span> = Write, <span style=\" font-weight:700;\">3</span> = Write/Execute,</p><p><span style=\" font-weight:700;\">4</span> = Read, <span style=\" font-weight:700;\">5</span> = Read/Execute, <span style=\" font-weight:700;\">6</span> = Read/Write, <span style=\" font-weight:700;\">7</span> = Read/Write/Execute</p><p><span style=\" font-weight:700;\">Default</span>: 600 - You can read/write, others have no permissions</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
         self.label_sync_file_permissions.setText(QCoreApplication.translate("profile_settings", u"Sync file permissions", None))
 #if QT_CONFIG(tooltip)
-        self.label_sync_dir_permissions.setToolTip(QCoreApplication.translate("profile_settings", u"<html><head/><body><p>Utilise the <a href=\"https://chmod-calculator.com/\"><span style=\" text-decoration: underline; color:#5e81ac;\">Unix Permissions Calculator</span></a> to assist in determining the required permissions.</p><p><br/></p><p>Important: Special permission bits (setuid, setgid, sticky bit) are not supported. </p><p>Valid permission values are from <span style=\" font-weight:700;\">000</span> to <span style=\" font-weight:700;\">777</span> only.</p></body></html>", None))
+        self.label_sync_dir_permissions.setToolTip(QCoreApplication.translate("profile_settings", u"<html><head/><body><p>Valid permission values are from <span style=\" font-weight:700;\">000</span> to <span style=\" font-weight:700;\">777</span> only. Important: Special permission bits (setuid, setgid, sticky bit) are not supported. </p><p>First number: Permissions for you, the owner</p><p>Second number: Permissions for users of the same group as you</p><p>Third number: Permissions for all other users</p><p><span style=\" font-weight:700;\">0</span> = None, <span style=\" font-weight:700;\">1</span> = Execute, <span style=\" font-weight:700;\">2</span> = Write, <span style=\" font-weight:700;\">3</span> = Write/Execute,</p><p><span style=\" font-weight:700;\">4</span> = Read, <span style=\" font-weight:700;\">5</span> = Read/Execute, <span style=\" font-weight:700;\">6</span> = Read/Write, <span style=\" font-weight:700;\">7</span> = Read/Write/Execute</p><p>The execute permission is required to open directories.</p><p><span style=\" font-weight:700;\">Default</span>: 700 - You can read/write/execute, othe"
+                        "rs have no permissions</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
         self.label_sync_dir_permissions.setText(QCoreApplication.translate("profile_settings", u"Sync dir permissions", None))
 #if QT_CONFIG(tooltip)

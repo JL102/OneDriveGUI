@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>820</width>
-    <height>692</height>
+    <height>694</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,7 +50,7 @@
         <string/>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="monitored_tab_2">
         <attribute name="title">
@@ -233,10 +233,10 @@
               <item row="0" column="0">
                <widget class="QLabel" name="label_monitor_interval">
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The monitor interval is defined as the wait time 'between' sync's when running in monitor mode. &lt;/p&gt;&lt;p&gt;When this interval expires, the client will check OneDrive for changes online, performing data &lt;/p&gt;&lt;p&gt;integrity checks and scanning the local &lt;span style=&quot; font-weight:700;&quot;&gt;Sync Directory&lt;/span&gt; for new content.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;By default without configuration, monitor interval is set to &lt;span style=&quot; font-weight:700;&quot;&gt;300&lt;/span&gt; seconds. Setting this value &lt;/p&gt;&lt;p&gt;to &lt;span style=&quot; font-weight:700;&quot;&gt;600&lt;/span&gt; will run the sync process every &lt;span style=&quot; font-weight:700;&quot;&gt;10 minutes&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The monitor interval is defined as the wait time 'between' sync's when running in monitor mode. When this interval expires, the client will check OneDrive for changes online, performing data integrity checks and scanning the local &lt;span style=&quot; font-weight:700;&quot;&gt;Sync Directory&lt;/span&gt; for new content.&lt;br/&gt;&lt;/p&gt;&lt;p&gt;By default without configuration, monitor interval is set to &lt;span style=&quot; font-weight:700;&quot;&gt;300&lt;/span&gt; seconds. Setting this value to &lt;span style=&quot; font-weight:700;&quot;&gt;600&lt;/span&gt; will run the sync process every &lt;span style=&quot; font-weight:700;&quot;&gt;10 minutes&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="text">
-                 <string>Monitor interval</string>
+                 <string>Monitor interval (seconds)</string>
                 </property>
                </widget>
               </item>
@@ -250,18 +250,10 @@
               <item row="1" column="0">
                <widget class="QLabel" name="label_monitor_fullscan_frequency">
                 <property name="toolTip">
-                 <string>This configuration option controls the number of 'monitor_interval' iterations between when a 
-full scan of your data is performed to ensure data integrity and consistency.
-
-By default without configuration, 'monitor_fullscan_frequency' is set to 12. In this default state,
-this means that a full scan is performed every 'monitor_interval' x 'monitor_fullscan_frequency' = 3600 seconds. 
-This is only applicable when running in --monitor mode.
-
-Setting this value to 24 means that the full scan of OneDrive and checking the integrity of the data stored 
-locally will occur every 2 hours (assuming 'monitor_interval' is set to 300 seconds).</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This configuration option controls the number of 'monitor_interval' iterations between when a full scan of your data is performed to ensure data integrity and consistency.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;By default without configuration, 'monitor_fullscan_frequency' is set to 12. In this default state, this means that a full scan is performed every 'monitor_interval' x 'monitor_fullscan_frequency' = 3600 seconds. This is only applicable when running in --monitor mode.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Setting this value to 24 means that the full scan of OneDrive and checking the integrity of the data stored locally will occur every 2 hours (assuming 'monitor_interval' is set to 300 seconds).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="text">
-                 <string>Monitor full-scan frequency</string>
+                 <string>Monitor full-scan multiplier</string>
                 </property>
                </widget>
               </item>
@@ -278,7 +270,7 @@ locally will occur every 2 hours (assuming 'monitor_interval' is set to 300 seco
                  <string>Number of children in a path that is locally removed which will be classified as a 'big data delete'</string>
                 </property>
                 <property name="text">
-                 <string>Clasify as big delete</string>
+                 <string>&quot;Big delete&quot; threshold</string>
                 </property>
                </widget>
               </item>
@@ -295,7 +287,7 @@ locally will occur every 2 hours (assuming 'monitor_interval' is set to 300 seco
                  <string>Operation Timeout is the maximum amount of time (seconds) a file operation is allowed to take. This includes DNS resolution, connecting, data transfer, etc.</string>
                 </property>
                 <property name="text">
-                 <string>Operation timeout</string>
+                 <string>Operation timeout (seconds)</string>
                 </property>
                </widget>
               </item>
@@ -343,7 +335,7 @@ locally will occur every 2 hours (assuming 'monitor_interval' is set to 300 seco
               <item row="0" column="0">
                <widget class="QLabel" name="label_sync_file_permissions">
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Utilise the &lt;a href=&quot;https://chmod-calculator.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#5e81ac;&quot;&gt;Unix Permissions Calculator&lt;/span&gt;&lt;/a&gt; to assist in determining the required permissions.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Important: Special permission bits (setuid, setgid, sticky bit) are not supported. &lt;/p&gt;&lt;p&gt;Valid permission values are from &lt;span style=&quot; font-weight:700;&quot;&gt;000&lt;/span&gt; to &lt;span style=&quot; font-weight:700;&quot;&gt;777&lt;/span&gt; only.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Valid permission values are from &lt;span style=&quot; font-weight:700;&quot;&gt;000&lt;/span&gt; to &lt;span style=&quot; font-weight:700;&quot;&gt;777&lt;/span&gt; only. Important: Special permission bits (setuid, setgid, sticky bit) are not supported. &lt;/p&gt;&lt;p&gt;First number: Permissions for you, the owner&lt;/p&gt;&lt;p&gt;Second number: Permissions for users of the same group as you&lt;/p&gt;&lt;p&gt;Third number: Permissions for all other users&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;0&lt;/span&gt; = None, &lt;span style=&quot; font-weight:700;&quot;&gt;1&lt;/span&gt; = Execute, &lt;span style=&quot; font-weight:700;&quot;&gt;2&lt;/span&gt; = Write, &lt;span style=&quot; font-weight:700;&quot;&gt;3&lt;/span&gt; = Write/Execute,&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;4&lt;/span&gt; = Read, &lt;span style=&quot; font-weight:700;&quot;&gt;5&lt;/span&gt; = Read/Execute, &lt;span style=&quot; font-weight:700;&quot;&gt;6&lt;/span&gt; = Read/Write, &lt;span style=&quot; font-weight:700;&quot;&gt;7&lt;/span&gt; = Read/Write/Execute&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Default&lt;/span&gt;: 600 - You can read/write, others have no permissions&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="text">
                  <string>Sync file permissions</string>
@@ -360,7 +352,7 @@ locally will occur every 2 hours (assuming 'monitor_interval' is set to 300 seco
               <item row="1" column="0">
                <widget class="QLabel" name="label_sync_dir_permissions">
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Utilise the &lt;a href=&quot;https://chmod-calculator.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#5e81ac;&quot;&gt;Unix Permissions Calculator&lt;/span&gt;&lt;/a&gt; to assist in determining the required permissions.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Important: Special permission bits (setuid, setgid, sticky bit) are not supported. &lt;/p&gt;&lt;p&gt;Valid permission values are from &lt;span style=&quot; font-weight:700;&quot;&gt;000&lt;/span&gt; to &lt;span style=&quot; font-weight:700;&quot;&gt;777&lt;/span&gt; only.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Valid permission values are from &lt;span style=&quot; font-weight:700;&quot;&gt;000&lt;/span&gt; to &lt;span style=&quot; font-weight:700;&quot;&gt;777&lt;/span&gt; only. Important: Special permission bits (setuid, setgid, sticky bit) are not supported. &lt;/p&gt;&lt;p&gt;First number: Permissions for you, the owner&lt;/p&gt;&lt;p&gt;Second number: Permissions for users of the same group as you&lt;/p&gt;&lt;p&gt;Third number: Permissions for all other users&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;0&lt;/span&gt; = None, &lt;span style=&quot; font-weight:700;&quot;&gt;1&lt;/span&gt; = Execute, &lt;span style=&quot; font-weight:700;&quot;&gt;2&lt;/span&gt; = Write, &lt;span style=&quot; font-weight:700;&quot;&gt;3&lt;/span&gt; = Write/Execute,&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;4&lt;/span&gt; = Read, &lt;span style=&quot; font-weight:700;&quot;&gt;5&lt;/span&gt; = Read/Execute, &lt;span style=&quot; font-weight:700;&quot;&gt;6&lt;/span&gt; = Read/Write, &lt;span style=&quot; font-weight:700;&quot;&gt;7&lt;/span&gt; = Read/Write/Execute&lt;/p&gt;&lt;p&gt;The execute permission is required to open directories.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Default&lt;/span&gt;: 700 - You can read/write/execute, others have no permissions&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="text">
                  <string>Sync dir permissions</string>
